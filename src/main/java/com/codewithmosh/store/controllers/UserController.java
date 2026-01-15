@@ -43,9 +43,8 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> addUser
-            (@Valid @RequestBody RegisterUserRequest request,
-             UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<UserDto> addUser(@Valid @RequestBody RegisterUserRequest request,
+                                           UriComponentsBuilder uriBuilder) {
         if (userRepository.existsByEmail(request.getEmail()))
             throw new RuntimeException("This email is already in use");
 
@@ -58,8 +57,7 @@ public class UserController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<UserDto> updateUser(
-            @PathVariable(name = "id") Long id, @RequestBody UpdateUserRequest request) {
+    public ResponseEntity<UserDto> updateUser(@PathVariable(name = "id") Long id, @RequestBody UpdateUserRequest request) {
         var user = userRepository.findById(id).orElse(null);
         if (user == null)
             return ResponseEntity.notFound().build();
