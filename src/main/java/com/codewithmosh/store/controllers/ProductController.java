@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProductController {
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
@@ -51,7 +51,7 @@ public class ProductController {
         product.setCategory(category);
         productRepository.save(product);
         productDto.setId(product.getId());
-        var uri = uriBuilder.path("/product/{id}").buildAndExpand(productDto.getId()).toUri();
+        var uri = uriBuilder.path("/products/{id}").buildAndExpand(productDto.getId()).toUri();
 
         return ResponseEntity.created(uri).body(productDto);
     }

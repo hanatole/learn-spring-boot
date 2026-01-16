@@ -6,6 +6,10 @@ spring:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+  jwt:
+    secret: ${JWT_SECRET}
+    accessTokenExpiration: 300 #5min
+    refreshTokenExpiration: 604800 #30 days
 server:
   servlet:
     context-path: /api/v1/
